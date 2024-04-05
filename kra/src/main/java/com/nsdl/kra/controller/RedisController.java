@@ -13,8 +13,10 @@ public class RedisController {
 
     @Autowired
     public RedisTemplate<String, String> redisTemplate;  // Auto config usage
+
     @Autowired
     public Jedis jedis;
+
     @PostMapping()
     public String setRedisKey(@RequestBody RedisSetRequest redisSetRequest) {
         String status = null;
@@ -26,6 +28,7 @@ public class RedisController {
         }
         return status;
     }
+    
     @GetMapping()
     public String getRedisKey(@RequestBody RedisRequest redisRequest) {
         String value = null;

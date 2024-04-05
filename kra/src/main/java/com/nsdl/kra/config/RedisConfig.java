@@ -13,10 +13,10 @@ import redis.clients.jedis.Jedis;
 @Configuration
 public class RedisConfig {
 
-    @Value("${spring.redis.host}")
+    @Value("${redis.host}")
     private String redisHost;
 
-    @Value("${spring.redis.port}")
+    @Value("${redis.port}")
     private int redisPort;
 
     @Bean                   // Auto Configuration Overriding if required
@@ -38,7 +38,7 @@ public class RedisConfig {
         return template;
     }
 
-    @Bean          // Jedis Manual Configuration
+    @Bean          // Redis Manual Configuration with Redis
     public Jedis jedis() {
         return new Jedis(redisHost, redisPort);
     }
