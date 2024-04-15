@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.nsdl.kra.model.dao.EmployeesDao;
 import com.nsdl.kra.model.dto.Employees;
+import com.nsdl.kra.repository.EmployeeType;
 import com.nsdl.kra.repository.EmployeesRepository;
 
 @Service
@@ -40,10 +41,27 @@ public class EmployeesService {
         }    
         return empListDTO;
 
+
     }
 
     public void createEmployee(String name, String email, String department, Date hireDate) {
         employeesRepository.insert_Employee(name, email, department, hireDate);
+    }
+
+    public void createCustomEmp(Employees employees){
+        EmployeeType empType = new EmployeeType();
+        empType.setName(employees.getName());
+        empType.setEmail(employees.getEmail());
+        empType.setDepartment(employees.getDepartment());
+        empType.setHire_date(employees.getHireDate());
+        EmployeesDao employeesDao = new EmployeesDao();
+        employeesDao.setName(employees.getName());
+        employeesDao.setEmail(employees.getEmail());
+        employeesDao.setDepartment(employees.getDepartment());
+        employeesDao.setHireDate(employees.getHireDate());
+      //  employeesDao.setEmployeeType(empType);
+        employeesRepository.insertEmployeeCustomType(empType);
+
     }
     
 }

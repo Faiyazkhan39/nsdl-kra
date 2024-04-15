@@ -2,7 +2,6 @@ package com.nsdl.kra.controller;
 
 import java.util.List;
 
-import org.apache.kafka.common.protocol.types.Field.Str;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,8 +33,8 @@ public class EmployeesController {
 
     @PostMapping("/sp")
     public String saveEmployeesBySP(@RequestBody Employees employees){
-         employeesService.createEmployee(employees.getName(),employees.getEmail(),employees.getDepartment(),employees.getHireDate());
+         //employeesService.createEmployee(employees.getName(),employees.getEmail(),employees.getDepartment(),employees.getHireDate());
+        employeesService.createCustomEmp(employees);
         return "successfully save";
     }
-
 }

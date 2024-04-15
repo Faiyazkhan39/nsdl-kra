@@ -22,6 +22,21 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-annotations</artifactId>
+    <version>3.5.0-Final</version>
+</dependency>
+
+<!-- 
+
+		<dependency>
+    <		groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-core</artifactId>
+		</dependency> -->
+
+
 		<!-- <dependency>
     		<groupId>com.zaxxer</groupId>
     		<artifactId>HikariCP</artifactId>
@@ -68,7 +83,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.22</version>
+			<version>1.18.22</version>	
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -76,6 +91,11 @@
    			<artifactId>spring-rabbit</artifactId>
     		<version>3.1.1</version>
 		</dependency>
+		<dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+   			 <artifactId>log4j-core</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

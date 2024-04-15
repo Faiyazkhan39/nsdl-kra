@@ -23,4 +23,7 @@ public interface EmployeesRepository extends JpaRepository<EmployeesDao,Long>{
         @Param(value = "p_hire_date") Date hireDate
     );
 
+      @Procedure(name = "insert_employee")
+     void insertEmployeeCustomType(@Param("p_employee") EmployeeType employee_type);
+
 }
