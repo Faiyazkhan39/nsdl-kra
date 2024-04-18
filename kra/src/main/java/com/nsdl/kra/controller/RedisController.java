@@ -18,7 +18,7 @@ import redis.clients.jedis.Jedis;
 public class RedisController {
 
     @Autowired
-    public RedisTemplate<String, String> redisTemplate;  // Auto config usage
+    public RedisTemplate<String, String> redisTemplate; // Auto config usage
 
     @Autowired
     public Jedis jedis;
@@ -28,19 +28,19 @@ public class RedisController {
         String status = null;
         try {
             status = jedis.set(redisSetRequest.getKey(), redisSetRequest.getValue());
-          //  redisTemplate.opsForValue().set(redisSetRequest.getKey(),redisSetRequest.getKey());
+            // redisTemplate.opsForValue().set(redisSetRequest.getKey(),redisSetRequest.getKey());
         } catch (Exception e) {
             e.printStackTrace();
         }
         return status;
     }
-    
+
     @GetMapping()
     public String getRedisKey(@RequestBody RedisRequest redisRequest) {
         String value = null;
         try {
             value = jedis.get(redisRequest.getKey());
-          //  value = redisTemplate.opsForValue().get(redisRequest.getKey());
+            // value = redisTemplate.opsForValue().get(redisRequest.getKey());
         } catch (Exception e) {
             e.printStackTrace();
         }

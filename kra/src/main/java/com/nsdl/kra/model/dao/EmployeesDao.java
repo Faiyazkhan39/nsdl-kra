@@ -19,22 +19,11 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@NamedStoredProcedureQuery(
-    name = "employee_type",
-    procedureName = "insert_employee",
-    parameters = {
-        @StoredProcedureParameter(
-            mode = ParameterMode.IN, 
-            type = EmployeeType.class, 
-            name = "p_employee"
-        )
-    }
-)
+@NamedStoredProcedureQuery(name = "employee_type", procedureName = "insert_employee", parameters = {
+        @StoredProcedureParameter(mode = ParameterMode.IN, type = EmployeeType.class, name = "p_employee") })
 @Entity
-@TypeDefs({
-    @TypeDef(name = "employee_type", typeClass = EmployeeType.class)
-})
-@TypeDef(name = "employee_type", typeClass = com.nsdl.kra.repository.EmployeeType.class) 
+@TypeDefs({ @TypeDef(name = "employee_type", typeClass = EmployeeType.class) })
+@TypeDef(name = "employee_type", typeClass = com.nsdl.kra.repository.EmployeeType.class)
 @Table(name = "employees")
 public class EmployeesDao {
 
@@ -42,11 +31,9 @@ public class EmployeesDao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private Long id;
-
     private String name;
     private String email;
     private String department;
-    
     @Column(name = "hire_date")
     private Date hireDate;
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class RabbitMQConsumer {
 
     @RabbitListener(queues = "nsdlQueue")
-    public void consume(String msg){
-        System.out.println("Rabbit MQ msg : "+msg);
+    public void consume(String msg) {
+        System.out.println("Rabbit MQ msg : " + msg);
     }
 }

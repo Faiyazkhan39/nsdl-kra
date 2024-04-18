@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nsdl.kra.services.KafkaService;
 
-
 @RestController
 @RequestMapping("/kafka")
 public class KafkaController {
@@ -22,5 +21,5 @@ public class KafkaController {
         kafkaService.sendMsg(msg);
         return ResponseEntity.ok("message sent to Kafka");
     }
-    
+
 }

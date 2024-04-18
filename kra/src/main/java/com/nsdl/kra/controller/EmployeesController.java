@@ -13,7 +13,6 @@ import com.nsdl.kra.model.dao.EmployeesDao;
 import com.nsdl.kra.model.dto.Employees;
 import com.nsdl.kra.services.EmployeesService;
 
-
 @RestController
 @RequestMapping("/emp")
 public class EmployeesController {
@@ -22,18 +21,18 @@ public class EmployeesController {
     private EmployeesService employeesService;
 
     @GetMapping()
-    public List<Employees> getAllEmployees(){
+    public List<Employees> getAllEmployees() throws Exception {
         return employeesService.getAllEmployees();
     }
 
     @PostMapping()
-    public EmployeesDao saveEmployees(@RequestBody Employees employees){
+    public EmployeesDao saveEmployees(@RequestBody Employees employees) {
         return employeesService.saveEmployee(employees);
     }
 
     @PostMapping("/sp")
-    public String saveEmployeesBySP(@RequestBody Employees employees){
-         //employeesService.createEmployee(employees.getName(),employees.getEmail(),employees.getDepartment(),employees.getHireDate());
+    public String saveEmployeesBySP(@RequestBody Employees employees) {
+        // employeesService.createEmployee(employees.getName(),employees.getEmail(),employees.getDepartment(),employees.getHireDate());
         employeesService.createCustomEmp(employees);
         return "successfully save";
     }

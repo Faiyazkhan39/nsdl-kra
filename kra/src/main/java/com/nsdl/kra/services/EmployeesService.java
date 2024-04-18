@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nsdl.kra.exceptions.NoDataException;
 import com.nsdl.kra.model.dao.EmployeesDao;
 import com.nsdl.kra.model.dto.Employees;
 import com.nsdl.kra.repository.EmployeeType;
@@ -27,9 +28,14 @@ public class EmployeesService {
         return employeesRepository.save(emp);
     }
 
-    public List<Employees> getAllEmployees() {
-        List<EmployeesDao> empList = employeesRepository.findAll();    
+    public List<Employees> getAllEmployees() throws Exception {
+
+        List<EmployeesDao> empList = employeesRepository.findAll();
         List<Employees> empListDTO = new ArrayList<>();
+        if ((empList.size() > 1)) {
+            throw new NoDataException("Welcome");
+        }
+
         for (EmployeesDao employee : empList) {
             Employees emp = new Employees();
             emp.setId(employee.getId());
@@ -38,9 +44,13 @@ public class EmployeesService {
             emp.setDepartment(employee.getDepartment());
             emp.setHireDate(employee.getHireDate());
             empListDTO.add(emp);
-        }    
-        return empListDTO;
-
+        }
+        try {
+            throw new NoDataException("Testing");
+        } catch (Exception e) {
+            System.out.println("Testub");
+        }
+        return null;
 
     }
 
@@ -48,7 +58,7 @@ public class EmployeesService {
         employeesRepository.insert_Employee(name, email, department, hireDate);
     }
 
-    public void createCustomEmp(Employees employees){
+    public void createCustomEmp(Employees employees) {
         EmployeeType empType = new EmployeeType();
         empType.setName(employees.getName());
         empType.setEmail(employees.getEmail());
@@ -59,9 +69,9 @@ public class EmployeesService {
         employeesDao.setEmail(employees.getEmail());
         employeesDao.setDepartment(employees.getDepartment());
         employeesDao.setHireDate(employees.getHireDate());
-      //  employeesDao.setEmployeeType(empType);
+        // employeesDao.setEmployeeType(empType);
         employeesRepository.insertEmployeeCustomType(empType);
 
     }
-    
+
 }

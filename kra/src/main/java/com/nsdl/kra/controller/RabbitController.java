@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nsdl.kra.services.RabbitMQService;
 
-
 @RestController
 @RequestMapping("/rabbit")
 public class RabbitController {
@@ -20,7 +19,6 @@ public class RabbitController {
     @PostMapping()
     public ResponseEntity<String> postRabbitMsg(@RequestParam("msg") String msg) {
         rabbitMQService.sendMsg(msg);
-
         return ResponseEntity.ok("msg save to RabbitMq");
     }
 
